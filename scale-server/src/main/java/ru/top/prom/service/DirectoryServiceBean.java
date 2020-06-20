@@ -56,12 +56,12 @@ public class DirectoryServiceBean implements DirectoryService {
 
     @Override
     public List<Cars> getCars() {
-        return carsRepository.findAll();
+        return carsRepository.findDistinctAll();
     }
 
     @Override
     public List<Cars> findCars(String carNum) {
-        return carsRepository.findByName(carNum);
+        return carsRepository.findByNumber(carNum);
     }
 
     @Override

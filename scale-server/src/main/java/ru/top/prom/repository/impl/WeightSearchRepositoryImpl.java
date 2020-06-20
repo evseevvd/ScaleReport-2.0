@@ -8,6 +8,7 @@ import ru.top.prom.service.api.SearchCriteria;
 import ru.top.prom.service.api.SearchResult;
 
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -20,6 +21,7 @@ import java.util.List;
 @Repository
 public class WeightSearchRepositoryImpl implements WeightSearchRepository {
 
+    @PersistenceContext
     EntityManager em;
 
     @Override

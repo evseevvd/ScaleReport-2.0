@@ -24,6 +24,7 @@ public class DirectoryRest {
         return new ArrayList<>();
     }
 
+    //FIXME убрать дубли
     @GetMapping(value = "/carnom")
     public List<Cars> getAllCarNom() {
         return service.getCars();

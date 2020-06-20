@@ -78,7 +78,7 @@ public class SearchCriteria {
     /**
      * Для пагинации кол-во результатов на страницу
      */
-    private Integer ItemPerPage;
+    private Integer itemPerPage;
 
     /**
      * позиция в списке результатов
@@ -174,11 +174,11 @@ public class SearchCriteria {
     }
 
     public Integer getItemPerPage() {
-        return ItemPerPage;
+        return itemPerPage;
     }
 
     public void setItemPerPage(Integer itemPerPage) {
-        ItemPerPage = itemPerPage;
+        this.itemPerPage = itemPerPage;
     }
 
     public Integer getPosition() {

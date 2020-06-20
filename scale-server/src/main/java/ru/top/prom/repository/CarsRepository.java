@@ -1,6 +1,7 @@
 package ru.top.prom.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import ru.top.prom.model.Cars;
 
@@ -20,5 +21,9 @@ public interface CarsRepository extends JpaRepository<Cars, Integer> {
      * @param name - гос номер
      * @return Вернет грузовики {@link Cars}, соответствующие гос номеру
      */
-    List<Cars> findByName(String name);
+    @Query("select distinct c from Cars c where c.name like LOWER(concat('%', ?1, '%'))")
+    List<Cars> findByNumber(String name);
+
+    @Query("select distinct c from Cars c")
+    List<Cars> findDistinctAll();
 }

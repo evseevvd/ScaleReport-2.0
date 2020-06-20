@@ -1,0 +1,99 @@
+<div>
+  <h2>Критерий поиска</h2>
+</div>
+<mat-divider></mat-divider>
+<mat-grid-list cols="2" rowHeight="70px">
+  <mat-grid-tile [colspan]="2">
+    <mat-form-field>
+      <mat-label>Смена</mat-label>
+      <mat-select [(ngModel)]="data.smena">
+        <mat-option *ngFor="let smena of smenaDS | async" [value]="smena.name">{{smena.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-label>Дата с</mat-label>
+      <input matInput [matDatepicker]="dfrom" [(ngModel)]="data.startDate">
+      <mat-datepicker-toggle matSuffix [for]="dfrom"></mat-datepicker-toggle>
+      <mat-datepicker #dfrom></mat-datepicker>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-form-field>
+      <mat-label>по</mat-label>
+      <input matInput [matDatepicker]="dto" [(ngModel)]="data.endDate">
+      <mat-datepicker-toggle matSuffix [for]="dto"></mat-datepicker-toggle>
+      <mat-datepicker #dto></mat-datepicker>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2">
+    <mat-form-field>
+      <mat-label>Гос. номер</mat-label>
+      <input type="text"
+             placeholder="Введите минимум 3 символа"
+             aria-label="Text"
+             matInput
+             [matAutocomplete]="auto"
+             [(ngModel)]="data.carNom" (ngModelChange)="ctxSerach($event)">
+      <mat-autocomplete #auto="matAutocomplete" >
+        <mat-option *ngFor="let car of carsDS | async" [value]="car.name">{{car.name}}</mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2">
+    <mat-form-field>
+      <mat-label>Погрузка</mat-label>
+      <mat-select [(ngModel)]="data.loading">
+        <mat-option *ngFor="let loading of loadingDS | async" [value]="loading.name">{{loading.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2">
+    <mat-form-field>
+      <mat-label>Разгрузка</mat-label>
+      <mat-select [(ngModel)]="data.unloading">
+        <mat-option *ngFor="let unloading of unloadingDS | async"
+                    [value]="unloading.name">{{unloading.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2">
+    <mat-form-field>
+      <mat-label>Вид груза</mat-label>
+      <mat-select [(ngModel)]="data.cargo">
+        <mat-option *ngFor="let cargo of cargoDS | async" [value]="cargo.name">{{cargo.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2">
+    <mat-form-field>
+      <mat-label>Грузоперевозчик</mat-label>
+      <mat-select [(ngModel)]="data.cargoCarrier">
+        <mat-option *ngFor="let cargoCarrier of cargoCarrierDS | async"
+                    [value]="cargoCarrier.name">{{cargoCarrier.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2">
+    <mat-form-field>
+      <mat-label>Грузоотправитель</mat-label>
+      <mat-select [(ngModel)]="data.sender">
+        <mat-option *ngFor="let sender of senderDS | async" [value]="sender.name">{{sender.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2">
+    <mat-form-field>
+      <mat-label>Грузополучатель</mat-label>
+      <mat-select [(ngModel)]="data.addressee">
+        <mat-option *ngFor="let addressee of addresseeDS | async"
+                    [value]="addressee.name">{{addressee.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2">
+    <button mat-stroked-button color="primary" (click)="apply()">Применить</button>
+    <button mat-stroked-button color="warn" (click)="cancel()">Отменить</button>
+  </mat-grid-tile>
+</mat-grid-list>
