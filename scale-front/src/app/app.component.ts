@@ -18,7 +18,7 @@ export class AppComponent {
   }
 
   public openSearchDlg() {
-    this.dlg.open(CriteriaComponent, {width: '600px', data: {}}).afterClosed().subscribe(result => {
+    this.dlg.open(CriteriaComponent, {width: '700px', data: {}}).afterClosed().subscribe(result => {
       if (result !== 'reject') {
         this.criteria = result;
         this.service.search(this.criteria).subscribe(res => {

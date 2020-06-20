@@ -30,7 +30,7 @@
   <mat-grid-tile [colspan]="2">
     <mat-form-field>
       <mat-label>Гос. номер</mat-label>
-      <input type="text"
+      <!--<input type="text"
              placeholder="Введите минимум 3 символа"
              aria-label="Text"
              matInput
@@ -38,7 +38,14 @@
              [(ngModel)]="data.carNom" (ngModelChange)="ctxSerach($event)">
       <mat-autocomplete #auto="matAutocomplete" >
         <mat-option *ngFor="let car of carsDS | async" [value]="car.name">{{car.name}}</mat-option>
-      </mat-autocomplete>
+      </mat-autocomplete>-->
+      <mat-select [(ngModel)]="data.carNom" multiple>
+        <mat-option multiple="false">
+          <input type="text" matInput placeholder="Введите минимум 3 символа" [(ngModel)]="query"
+                 (ngModelChange)="ctxSerach($event)">
+        </mat-option>
+        <mat-option *ngFor="let car of carsDS | async" [value]="car.name">{{car.name}}</mat-option>
+      </mat-select>
     </mat-form-field>
   </mat-grid-tile>
   <mat-grid-tile [colspan]="2">

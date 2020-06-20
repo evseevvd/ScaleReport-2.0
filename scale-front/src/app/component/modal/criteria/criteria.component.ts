@@ -21,6 +21,8 @@ export class CriteriaComponent implements OnInit {
   public addresseeDS: Observable<any>;
   public senderDS: Observable<any>;
 
+  public query: string;
+
 
 
   constructor(
