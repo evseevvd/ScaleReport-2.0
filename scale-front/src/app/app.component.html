@@ -1,7 +1,17 @@
-<button mat-button color="primary" (click)="openSearchDlg()">search</button>
-<app-scale-table></app-scale-table>
+<div class="header-container">
+  <button mat-button color="primary" (click)="openSearchDlg()">Указать критериию</button>
+</div>
 
-<mat-divider></mat-divider>
-<div>
+<div *ngIf="isEmptyData(); else emptyData">
+  <app-scale-table [weights]="results.weightAutos"></app-scale-table>
+</div>
+<div class="footer-container">
   <h6>created by EvseeV Inc. &copy; 2020 ver. 2.0</h6>
 </div>
+
+<ng-template #emptyData>
+  <div class="text-center">
+    <span>По вашему запросу ничего не найдено.
+      Повторите <button mat-flat-button color="accent" (click)="openSearchDlg()">поиск</button></span>
+  </div>
+</ng-template>

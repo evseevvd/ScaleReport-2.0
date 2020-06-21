@@ -65,5 +65,6 @@
 
     <modules>
         <module>scale-server</module>
+        <module>scale-front</module>
     </modules>
 </project>

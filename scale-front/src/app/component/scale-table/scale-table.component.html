@@ -1,28 +1,65 @@
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <mat-header-cell *matHeaderCellDef> No.</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-  </ng-container>
+<div class="container-fluid">
+  <div>
+    <table class="table table-hover table-striped m-0">
+      <thead>
+      <tr>
+        <th rowspan="2" class="vcenter text-center" width="8.33%">Гос. номер</th>
+        <th rowspan="2" class="vcenter text-center" width="8.33%">Вид груза</th>
+        <th colspan="3" class="vcenter text-center _no-border-bottom">Фактическая масса</th>
+        <th colspan="2" class="vcenter text-center _no-border-bottom">Дата/Время</th>
+        <th rowspan="2" class="vcenter text-center" width="8.33%">Погрузка</th>
+        <th rowspan="2" class="vcenter text-center" width="8.33%">Разгрузка</th>
+        <th rowspan="2" class="vcenter text-center" width="8.33%">Грузоотправитель</th>
+        <th rowspan="2" class="vcenter text-center" width="8.33%">Грузополучатель</th>
+        <th rowspan="2" class="vcenter text-center" width="8.33%">Грузоперевозчик</th>
+      </tr>
+      <tr>
+        <th class="text-center _no-border-top" width="8.33%">Брутто</th>
+        <th class="text-center _no-border-top" width="8.33%">Тара</th>
+        <th class="text-center _no-border-top" width="8.33%">Нетто</th>
+        <th class="text-center _no-border-top" width="8.33%">Брутто</th>
+        <th class="text-center _no-border-top" width="8.33%">Тара</th>
+      </tr>
+      </thead>
+    </table>
+  </div>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <mat-header-cell *matHeaderCellDef> Name</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <mat-header-cell *matHeaderCellDef> Weight</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <mat-header-cell *matHeaderCellDef> Symbol</mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
-  </ng-container>
-
-  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
+  <div class="scroll-body"> <!--when-scrolled="loadMore()"-->
+      <table class="table table-hover table-striped">
+        <tbody *ngFor="let weight of weights | keyvalue">
+        <tr>
+          <td colspan="12" class="group-header">{{weight.key | date:'dd.MM.yyyy' }}</td>
+        </tr>
+        <tr *ngFor="let item of weight.value">
+          <td class=" text-center vcenter cursor-pointer" width="8.33%">
+            <a (click)="showAdvanced($event, item)">{{item.carNom}}</a>
+          </td>
+          <td class=" text-center vcenter" width="8.33%">{{item.cargo}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item.gross}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item.tare}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item.netto}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item.dateGross | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item.dateTare | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item.loading}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item.unloading}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item.sender}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item.addressee}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item.cargoCarrier}}</td>
+        </tr>
+        </tbody>
+    </table>
+  </div>
+  <div>
+    <table class="table table-hover table-striped">
+      <tfoot>
+      <tr>
+<!--        <td colspan="2" class=""><b class="footer-font-size">Всего за указанный период:</b></td>-->
+<!--        <td colspan="1" class=""><b class="footer-font-size">Брутто: {{total.gross | number:2}} т.</b></td>-->
+<!--        <td colspan="1" class=""><b class="footer-font-size">Тара: {{total.tare | number:2}} т.</b></td>-->
+<!--        <td colspan="1" class=""><b class="footer-font-size">Нетто: {{total.netto | number:2}} т.</b></td>-->
+<!--        <td colspan="7" class=""><b class="footer-font-size">Количество рейсов: {{ totalItems }}</b></td>-->
+      </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>

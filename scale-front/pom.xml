@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>ru.top.prom</groupId>
+        <artifactId>scaleReport</artifactId>
+        <version>2.0.1</version>
+    </parent>
+
+    <artifactId>scale-front</artifactId>
+    <version>2.0.1</version>
+    <name>ui</name>
+    <description>UI для Отчеты для ЦОФ "Щедрухинская" 2.0</description>
+
+    <properties>
+        <java.version>11</java.version>
+        <spring.web>2.3.1.RELEASE</spring.web>
+    </properties>
+
+    <dependencies>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+
+        </plugins>
+    </build>
+</project>

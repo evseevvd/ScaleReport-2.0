@@ -3,6 +3,8 @@ import {Criteria} from './service/model/criteria.model';
 import {SearchService} from './service/search.service';
 import {MatDialog} from '@angular/material/dialog';
 import {CriteriaComponent} from './component/modal/criteria/criteria.component';
+import {Weight} from './service/model/weight.model';
+import {SearchResult} from './service/model/search.result.model';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,8 @@ import {CriteriaComponent} from './component/modal/criteria/criteria.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  criteria: Criteria;
+  public criteria: Criteria;
+  public results: SearchResult;
 
 
   constructor(private service: SearchService, private dlg: MatDialog) {
@@ -22,7 +25,7 @@ export class AppComponent {
       if (result !== 'reject') {
         this.criteria = result;
         this.service.search(this.criteria).subscribe(res => {
-          console.log(res);
+          this.results = res;
         });
       }
     });
@@ -30,5 +33,9 @@ export class AppComponent {
 
   public search() {
 
+  }
+
+  public isEmptyData() {
+    return !!this.results;
   }
 }

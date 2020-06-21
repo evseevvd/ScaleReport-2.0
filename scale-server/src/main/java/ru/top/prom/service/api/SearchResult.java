@@ -2,12 +2,11 @@ package ru.top.prom.service.api;
 
 import ru.top.prom.model.WeightAuto;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class SearchResult {
 
-    private List<WeightAuto> weightAutos = new ArrayList<>();
+    private Map<Date, List<WeightAuto>> weightAutos = new HashMap<>();
 
     private Integer totalResult;
 
@@ -21,7 +20,7 @@ public class SearchResult {
 
     private Float totalTare;
 
-    public List<WeightAuto> getWeightAutos() {
+    public Map<Date, List<WeightAuto>> getWeightAutos() {
         return weightAutos;
     }
 

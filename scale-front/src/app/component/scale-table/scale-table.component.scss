@@ -1,0 +1,114 @@
+.search-box {
+  border-radius: 5px 5px 10px 10px;
+  border: 2px solid #898989;
+}
+
+._header {
+  height: 100px;
+  background-color: #e2e2e2;
+  margin-bottom: 20px;
+}
+
+._no-border-top {
+  border-top-width: 0px!important;
+  margin-top: 0px!important;
+}
+
+._no-border-bottom {
+  border-bottom-width: 0px!important;
+  padding-bottom: 0px!important;
+}
+
+.vcenter {
+  vertical-align: middle!important;
+}
+
+.scroll-body {
+  max-height: 730px;
+  overflow-y: scroll;
+}
+
+.margin-0._full {
+  margin: 0;
+}
+
+.margin-bottom-0 {
+  margin-bottom: 0;
+}
+
+.margin-bottom-30 {
+  margin-bottom: 30px;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+.margin-30._left {
+  margin-left: 30px;
+}
+
+.margin-30._right {
+  margin-right: 30px;
+}
+
+.padding-12._left {
+  padding-left: 12px;
+}
+
+
+.selectHeader {
+  /* Please note: All these selectors are only applied to children of elements with the 'selectdemoSelectHeader' class */ }
+.selectHeader .header-searchbox {
+  border: none;
+  outline: none;
+  height: 100%;
+  width: 100%;
+  padding: 0; }
+.selectHeader .select-header {
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(0, 0, 0, 0.14), 0 0 0 0 rgba(0, 0, 0, 0.12);
+  padding-left: 10.667px;
+  height: 48px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: auto; }
+.selectHeader md-content._md {
+  max-height: 240px; }
+
+.md-sidenav-lg {
+  width: 520px;
+  max-width: 800px
+}
+
+.md-input-container-margin {
+  margin-bottom: 40px;
+  margin-top: 40px;
+}
+
+.group-header {
+  text-align: center;
+  font-size: 16px;
+  text-decoration: underline;
+  font-weight: bolder;
+  background-color: rgb(63,81,181)!important;
+  color: white;
+}
+
+.img-preview {
+  max-width: 100px;
+  max-height: 100px;
+  width: 100px;
+  height: 100px;
+}
+
+.authtor {
+  color: #d2d2d2;
+  font-size: 10px;
+  padding-right: 30px;
+}
+
+.footer-font-size {
+  font-size: 16px;
+}

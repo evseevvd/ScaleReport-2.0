@@ -10,6 +10,7 @@ import ru.top.prom.service.api.SearchResult;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -17,6 +18,10 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import static java.util.function.Function.identity;
 
 @Repository
 public class WeightSearchRepositoryImpl implements WeightSearchRepository {
@@ -67,7 +72,7 @@ public class WeightSearchRepositoryImpl implements WeightSearchRepository {
 
         weightAutoCriteriaQuery.select(root).where(predicates.toArray(new Predicate[predicates.size()])).orderBy(criteriaBuilder.asc(root.get("dateGross")));
 
-        Query resultQuery = em.createQuery(weightAutoCriteriaQuery);
+        TypedQuery<WeightAuto> resultQuery = em.createQuery(weightAutoCriteriaQuery);
 
         resultQuery.setFirstResult(criteria.getPosition());
         resultQuery.setMaxResults(criteria.getItemPerPage());
@@ -92,7 +97,10 @@ public class WeightSearchRepositoryImpl implements WeightSearchRepository {
         response.setItemPerPage(criteria.getItemPerPage());
         response.setTotalResult(em.createQuery(weightAutoCriteriaQuery).getResultList().size());
         response.setPosition(criteria.getPosition());
-        response.getWeightAutos().addAll(resultQuery.getResultList());
+        response.getWeightAutos().putAll(
+                resultQuery
+                .getResultStream()
+                .collect(Collectors.groupingBy(WeightAuto::getDate)));
         response.setTotalGross(gross);
         response.setTotalTare(tare);
         response.setTotalNetto(netto);
@@ -142,10 +150,14 @@ public class WeightSearchRepositoryImpl implements WeightSearchRepository {
 
         weightAutoCriteriaQuery.select(root).where(predicates.toArray(new Predicate[predicates.size()])).orderBy(criteriaBuilder.asc(root.get("dateGross")));
 
-        Query resultQuery = em.createQuery(weightAutoCriteriaQuery);
+        TypedQuery<WeightAuto> resultQuery = em.createQuery(weightAutoCriteriaQuery);
 
         SearchResult response = new SearchResult();
-        response.getWeightAutos().addAll(resultQuery.getResultList());
+        response.getWeightAutos().putAll(
+                resultQuery
+                        .getResultStream()
+                        .collect(Collectors.groupingBy(WeightAuto::getDate))
+        );
 
 
         return response;

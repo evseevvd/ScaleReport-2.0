@@ -1,7 +1,7 @@
 import {Weight} from './weight.model';
 
 export interface SearchResult {
-  weightAutos: Array<Weight>;
+  weightAutos: Map<Date, Array<Weight>>;
   totalResult: number;
   itemPerPage: number;
   position: number;
