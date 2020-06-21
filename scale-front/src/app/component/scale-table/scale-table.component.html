@@ -26,7 +26,7 @@
 
   <div class="scroll-body"> <!--when-scrolled="loadMore()"-->
       <table class="table table-hover table-striped">
-        <tbody *ngFor="let weight of weights | keyvalue">
+        <tbody *ngFor="let weight of result.weightAutos | keyvalue">
         <tr>
           <td colspan="12" class="group-header">{{weight.key | date:'dd.MM.yyyy' }}</td>
         </tr>
@@ -53,11 +53,11 @@
     <table class="table table-hover table-striped">
       <tfoot>
       <tr>
-<!--        <td colspan="2" class=""><b class="footer-font-size">Всего за указанный период:</b></td>-->
-<!--        <td colspan="1" class=""><b class="footer-font-size">Брутто: {{total.gross | number:2}} т.</b></td>-->
-<!--        <td colspan="1" class=""><b class="footer-font-size">Тара: {{total.tare | number:2}} т.</b></td>-->
-<!--        <td colspan="1" class=""><b class="footer-font-size">Нетто: {{total.netto | number:2}} т.</b></td>-->
-<!--        <td colspan="7" class=""><b class="footer-font-size">Количество рейсов: {{ totalItems }}</b></td>-->
+        <td colspan="2" class=""><b class="footer-font-size" width="8.33%">Всего за указанный период:</b></td>
+        <td colspan="1" class=""><b class="footer-font-size" width="8.33%">Брутто: {{result.totalGross}} т.</b></td>
+        <td colspan="1" class=""><b class="footer-font-size" width="8.33%">Тара: {{result.totalTare}} т.</b></td>
+        <td colspan="1" class=""><b class="footer-font-size" width="8.33%">Нетто: {{result.totalNetto}} т.</b></td>
+        <td colspan="7" class=""><b class="footer-font-size" width="8.33%">Количество рейсов: {{ result.totalResult }}</b></td>
       </tr>
       </tfoot>
     </table>

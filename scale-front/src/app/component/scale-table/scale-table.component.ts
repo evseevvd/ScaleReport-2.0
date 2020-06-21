@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Weight} from '../../service/model/weight.model';
+import {SearchResult} from '../../service/model/search.result.model';
 
 @Component({
   selector: 'app-scale-table',
@@ -8,10 +9,7 @@ import {Weight} from '../../service/model/weight.model';
 })
 export class ScaleTableComponent implements OnInit {
 
-  @Input() weights: Map<Date, Array<Weight>>;
-
-  displayedColumns: string[] = ['carNom', 'cargo', 'gross', 'tare', 'netto', 'dateGross', 'dateTare', 'loading',
-    'unloading', 'sender', 'addressee', 'cargoCarrier'];
+  @Input() result: SearchResult;
 
   constructor() {
   }

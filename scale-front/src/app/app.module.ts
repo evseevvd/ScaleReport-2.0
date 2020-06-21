@@ -21,13 +21,15 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {DateAdapter, MatNativeDateModule} from '@angular/material/core';
 import {FormsModule} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { PrintModalComponent } from './component/modal/print-modal/print-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ScaleTableComponent,
     PrintFormComponent,
-    CriteriaComponent
+    CriteriaComponent,
+    PrintModalComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +53,7 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
   providers: [
     MatNativeDateModule
   ],
-  entryComponents: [CriteriaComponent],
+  entryComponents: [CriteriaComponent, PrintModalComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

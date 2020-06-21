@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Распечатать</h2>
+<mat-dialog-content class="mat-typography">
+  <div #content>
+    <app-print-form [data]="data"></app-print-form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+  <button mat-stroked-button color="primary" (click)="print()">Распечатать</button>
+  <button mat-stroked-button color="warn" (click)="cancel()">Закрыть</button>
+</mat-dialog-actions>
+
+<iframe style="visibility: hidden; top: 0; position: fixed; right: 0; bottom: 0; width: 0; height: 0; border: 0"
+        #printFrame src="about:blank">
+</iframe>

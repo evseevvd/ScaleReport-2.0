@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {SearchResult} from '../../service/model/search.result.model';
 
 @Component({
   selector: 'app-print-form',
@@ -6,8 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./print-form.component.scss']
 })
 export class PrintFormComponent implements OnInit {
+  @Input() data: SearchResult;
+  constructor(
 
-  constructor() { }
+  ) { }
 
   ngOnInit() {
   }
