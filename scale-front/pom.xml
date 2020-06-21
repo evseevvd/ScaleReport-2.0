@@ -1,31 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>ru.top.prom</groupId>
-        <artifactId>scaleReport</artifactId>
-        <version>2.0.1</version>
-    </parent>
-
-    <artifactId>scale-front</artifactId>
+  <parent>
+    <groupId>ru.top.prom</groupId>
+    <artifactId>scaleReport</artifactId>
     <version>2.0.1</version>
-    <name>ui</name>
-    <description>UI для Отчеты для ЦОФ "Щедрухинская" 2.0</description>
+  </parent>
 
-    <properties>
-        <java.version>11</java.version>
-        <spring.web>2.3.1.RELEASE</spring.web>
-    </properties>
+  <artifactId>scale-front</artifactId>
+  <version>2.0.1</version>
+  <name>ui</name>
+  <description>UI для Отчеты для ЦОФ "Щедрухинская" 2.0</description>
 
-    <dependencies>
+  <properties>
+    <java.version>11</java.version>
+    <spring.web>2.3.1.RELEASE</spring.web>
+  </properties>
 
-    </dependencies>
+  <dependencies>
 
-    <build>
-        <plugins>
+  </dependencies>
 
-        </plugins>
-    </build>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>com.github.eirslett</groupId>
+        <artifactId>frontend-maven-plugin</artifactId>
+        <version>1.7.6</version>
+        <configuration>
+          <workingDirectory>./</workingDirectory>
+          <nodeVersion>v10.16.0</nodeVersion>
+          <npmVersion>6.10.2</npmVersion>
+        </configuration>
+        <executions>
+          <execution>
+            <id>install node and npm</id>
+            <goals>
+              <goal>install-node-and-npm</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>npm install</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>npm run build</id>
+            <goals>
+              <goal>npm</goal>
+            </goals>
+            <configuration>
+              <arguments>run build</arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    <resources>
+      <resource>
+        <directory>./dist/scale-front</directory>
+        <targetPath>static</targetPath>
+      </resource>
+    </resources>
+  </build>
 </project>
