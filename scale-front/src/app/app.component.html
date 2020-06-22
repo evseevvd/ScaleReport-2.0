@@ -1,6 +1,6 @@
 <div class="">
   <button mat-button color="warn" (click)="openSearchDlg()">Указать критериию</button>
-  <button mat-button color="primary" (click)="openPrintDlg()" [disabled]="isEmptyData()">Распечатать</button>
+  <button mat-button color="primary" (click)="openPrintDlg()" [disabled]="!isEmptyData()">Распечатать</button>
 </div>
 
 <div *ngIf="isEmptyData(); else emptyData">
