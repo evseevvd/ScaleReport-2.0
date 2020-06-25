@@ -2,6 +2,8 @@
 
 USER=reporter;
 workdir=/opt/scale-server;
+NGINX=/etc/nginx
+DEFAULT_NGINX_CONF=${NGINX}/sites-enabled/@default;
 
 if id ${USER} >/dev/null 2>&1; then
         echo -e "\e[41mInstall service fail: user exists.";
@@ -23,5 +25,12 @@ else
         echo -e "\e[34mStart service 'scale-server'";
         systemctl start scale-server;
         echo -e "\e[34mSuccess. Start 'systemctl start scale-server' Stop 'systemctl stop scale-server'";
+
+        if [[ -f ${DEFAULT_NGINX_CONF} ]]; then
+            rm /etc/nginx/sites-enabled/@default
+        fi
+        cp scale-front ${NGINX}/sites-available;
+        ln -sf ${NGINX}/sites-available/scale-front ${NGINX}/sites-enabled/scale-front;
+        service nginx restart;
         exit 0;
 fi
