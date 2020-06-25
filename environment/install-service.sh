@@ -1,5 +1,5 @@
 #!/bin/sh
-
+# install all components
 USER=reporter;
 workdir=/opt/scale-server;
 NGINX=/etc/nginx

@@ -2,12 +2,10 @@
 Description=Scale WEB Server
 [Service]
 User=reporter
-# The configuration file application.properties should be here:
-#change this to your workspace
+
 PIDFile=/opt/scale-server/service.pid
 WorkingDirectory=/opt/scale-server
-#path to executable.
-#executable is a bash script which calls jar file
+
 ExecStart=/opt/scale-server/scale-server.sh
 SuccessExitStatus=143
 TimeoutStopSec=10
