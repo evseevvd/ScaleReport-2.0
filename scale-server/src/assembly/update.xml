@@ -25,9 +25,7 @@
             <outputDirectory>/</outputDirectory>
             <directory>../environment</directory>
             <includes>
-                <include>
-                    update-server.sh
-                </include>
+                <include>update-server.sh</include>
             </includes>
         </fileSet>
     </fileSets>
