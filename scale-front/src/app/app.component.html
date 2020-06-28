@@ -1,10 +1,10 @@
 <div class="">
   <button mat-button color="warn" (click)="openSearchDlg()">Указать критериию</button>
-  <button mat-button color="primary" (click)="openPrintDlg()" [disabled]="!isEmptyData()">Распечатать</button>
+  <button mat-button color="primary" (click)="openPrintDlg()" [disabled]="isEmptyData()">Распечатать</button>
 </div>
 
-<div *ngIf="isEmptyData(); else emptyData">
-  <app-scale-table [result]="results"></app-scale-table>
+<div *ngIf="!isEmptyData(); else emptyData">
+  <app-scale-table [weights]="weights" [total]="total" (loadMore)="loadMore()"></app-scale-table>
 </div>
 <div class="footer-container">
   <h6>created by EvseeV Inc. &copy; 2020 ver. 2.0</h6>
