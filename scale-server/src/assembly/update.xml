@@ -6,7 +6,7 @@
     http://maven.apache.org/plugins/maven-assembly-plugin/assembly/1.1.2
       http://maven.apache.org/xsd/assembly-1.1.2.xsd"
 >
-    <id>install</id>
+    <id>update</id>
     <formats>
         <format>zip</format>
     </formats>
@@ -25,10 +25,9 @@
             <outputDirectory>/</outputDirectory>
             <directory>../environment</directory>
             <includes>
-                <include>install-service.sh</include>
-                <include>scale-front</include>
-                <include>scale-server.service</include>
-                <include>scale-server.sh</include>
+                <include>
+                    update-server.sh
+                </include>
             </includes>
         </fileSet>
     </fileSets>

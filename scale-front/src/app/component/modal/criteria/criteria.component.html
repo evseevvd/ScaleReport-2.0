@@ -60,7 +60,7 @@
   <mat-grid-tile [colspan]="2">
     <mat-form-field>
       <mat-label>Вид груза</mat-label>
-      <mat-select [(ngModel)]="data.cargo">
+      <mat-select [(ngModel)]="data.cargo" multiple>
         <mat-option *ngFor="let cargo of cargoDS | async" [value]="cargo.name">{{cargo.name}}</mat-option>
       </mat-select>
     </mat-form-field>

@@ -23,10 +23,4 @@ public class ServiceBean implements SRService {
     public SearchResult findWeightAuto(SearchCriteria criteria) {
         return weightAutoWeightRepository.findByCriteria(criteria);
     }
-
-    @Override
-    public SearchResult findWeightAutoAll(SearchCriteria criteria) {
-        return weightAutoWeightRepository.findAllByCriteria(criteria);
-    }
-
 }

@@ -25,8 +25,4 @@ public class ReportRest {
         return service.findWeightAuto(criteria);
     }
 
-    @PostMapping(value = "/search/all")
-    public SearchResult searchAll(@RequestBody SearchCriteria criteria) {
-        return service.findWeightAutoAll(criteria);
-    }
 }

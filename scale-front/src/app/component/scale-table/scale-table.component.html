@@ -24,27 +24,27 @@
     </table>
   </div>
 
-  <div class="scroll-body"> <!--when-scrolled="loadMore()"-->
+  <div class="scroll-body" (scroll)="more($event)">
       <table class="table table-hover table-striped">
-        <tbody *ngFor="let weight of result.weightAutos | keyvalue">
+        <tbody *ngFor="let weight of weights | keyvalue">
         <tr>
           <td colspan="12" class="group-header">{{weight.key | date:'dd.MM.yyyy' }}</td>
         </tr>
         <tr *ngFor="let item of weight.value">
           <td class=" text-center vcenter cursor-pointer" width="8.33%">
-            <a (click)="showAdvanced($event, item)">{{item.carNom}}</a>
+            <a (click)="showAdvanced($event, item)">{{item['carNom']}}</a>
           </td>
-          <td class=" text-center vcenter" width="8.33%">{{item.cargo}}</td>
-          <td class=" text-center vcenter" width="8.33%">{{item.gross}}</td>
-          <td class=" text-center vcenter" width="8.33%">{{item.tare}}</td>
-          <td class=" text-center vcenter" width="8.33%">{{item.netto}}</td>
-          <td class=" text-center vcenter" width="8.33%">{{item.dateGross | date:'dd.MM.yyyy HH:mm:ss'}}</td>
-          <td class=" text-center vcenter" width="8.33%">{{item.dateTare | date:'dd.MM.yyyy HH:mm:ss'}}</td>
-          <td class=" text-center vcenter" width="8.33%">{{item.loading}}</td>
-          <td class=" text-center vcenter" width="8.33%">{{item.unloading}}</td>
-          <td class=" text-center vcenter" width="8.33%">{{item.sender}}</td>
-          <td class=" text-center vcenter" width="8.33%">{{item.addressee}}</td>
-          <td class=" text-center vcenter" width="8.33%">{{item.cargoCarrier}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item['cargo']}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item['gross']}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item['tare']}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item['netto']}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item['dateGross'] | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item['dateTare'] | date:'dd.MM.yyyy HH:mm:ss'}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item['loading']}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item['unloading']}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item['sender']}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item['addressee']}}</td>
+          <td class=" text-center vcenter" width="8.33%">{{item['cargoCarrier']}}</td>
         </tr>
         </tbody>
     </table>
@@ -54,10 +54,10 @@
       <tfoot>
       <tr>
         <td colspan="2" class=""><b class="footer-font-size" width="8.33%">Всего за указанный период:</b></td>
-        <td colspan="1" class=""><b class="footer-font-size" width="8.33%">Брутто: {{result.totalGross}} т.</b></td>
-        <td colspan="1" class=""><b class="footer-font-size" width="8.33%">Тара: {{result.totalTare}} т.</b></td>
-        <td colspan="1" class=""><b class="footer-font-size" width="8.33%">Нетто: {{result.totalNetto}} т.</b></td>
-        <td colspan="7" class=""><b class="footer-font-size" width="8.33%">Количество рейсов: {{ result.totalResult }}</b></td>
+        <td colspan="1" class=""><b class="footer-font-size" width="8.33%">Брутто: {{total.totalGross}} т.</b></td>
+        <td colspan="1" class=""><b class="footer-font-size" width="8.33%">Тара: {{total.totalTare}} т.</b></td>
+        <td colspan="1" class=""><b class="footer-font-size" width="8.33%">Нетто: {{total.totalNetto}} т.</b></td>
+        <td colspan="7" class=""><b class="footer-font-size" width="8.33%">Количество рейсов: {{ total.totalResult }}</b></td>
       </tr>
       </tfoot>
     </table>

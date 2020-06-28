@@ -2,33 +2,34 @@ package ru.top.prom.service.api;
 
 import ru.top.prom.model.WeightAuto;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 public class SearchResult {
 
-    private Map<Date, List<WeightAuto>> weightAutos = new HashMap<>();
+    private final List<WeightAuto> weightAutos = new ArrayList<>();
 
-    private Integer totalResult;
+    private Long totalResult;
 
     private Integer itemPerPage;
 
     private Integer position;
 
-    private Float totalGross;
+    private BigDecimal totalGross;
 
-    private Float totalNetto;
+    private BigDecimal totalNetto;
 
-    private Float totalTare;
+    private BigDecimal totalTare;
 
-    public Map<Date, List<WeightAuto>> getWeightAutos() {
+    public List<WeightAuto> getWeightAutos() {
         return weightAutos;
     }
 
-    public Integer getTotalResult() {
+    public Long getTotalResult() {
         return totalResult;
     }
 
-    public void setTotalResult(Integer totalResult) {
+    public void setTotalResult(Long totalResult) {
         this.totalResult = totalResult;
     }
 
@@ -48,27 +49,27 @@ public class SearchResult {
         this.position = position;
     }
 
-    public Float getTotalGross() {
+    public BigDecimal getTotalGross() {
         return totalGross;
     }
 
-    public void setTotalGross(Float totalGross) {
+    public void setTotalGross(BigDecimal totalGross) {
         this.totalGross = totalGross;
     }
 
-    public Float getTotalNetto() {
+    public BigDecimal getTotalNetto() {
         return totalNetto;
     }
 
-    public void setTotalNetto(Float totalNetto) {
+    public void setTotalNetto(BigDecimal totalNetto) {
         this.totalNetto = totalNetto;
     }
 
-    public Float getTotalTare() {
+    public BigDecimal getTotalTare() {
         return totalTare;
     }
 
-    public void setTotalTare(Float totalTare) {
+    public void setTotalTare(BigDecimal totalTare) {
         this.totalTare = totalTare;
     }
 }

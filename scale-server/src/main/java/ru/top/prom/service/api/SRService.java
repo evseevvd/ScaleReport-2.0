@@ -7,6 +7,4 @@ import java.util.List;
 public interface SRService {
 
     SearchResult findWeightAuto(SearchCriteria criteria);
-
-    SearchResult findWeightAutoAll(SearchCriteria criteria);
 }

@@ -11,5 +11,5 @@ public interface WeightSearchRepository {
      */
     SearchResult findByCriteria(SearchCriteria criteria);
 
-    SearchResult findAllByCriteria(SearchCriteria criteria);
+    SearchResult computedTotalAmount(SearchCriteria criteria);
 }

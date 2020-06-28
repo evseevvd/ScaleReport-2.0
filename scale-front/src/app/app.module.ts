@@ -18,10 +18,29 @@ import {HttpClientModule} from '@angular/common/http';
 import {MatListModule} from '@angular/material/list';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import {DateAdapter, MatNativeDateModule} from '@angular/material/core';
+import {
+  DateAdapter,
+  MAT_DATE_FORMATS,
+  MAT_DATE_LOCALE,
+  MatDateFormats,
+  MatNativeDateModule
+} from '@angular/material/core';
 import {FormsModule} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { PrintModalComponent } from './component/modal/print-modal/print-modal.component';
+import {MomentDateAdapter} from '@angular/material-moment-adapter';
+
+export const DATE_FORMATS: MatDateFormats = {
+  parse: {
+    dateInput: 'l'
+  },
+  display: {
+    dateInput: 'DD.MM.YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY'
+  }
+};
 
 @NgModule({
   declarations: [
@@ -51,7 +70,9 @@ import { PrintModalComponent } from './component/modal/print-modal/print-modal.c
     MatAutocompleteModule
   ],
   providers: [
-    MatNativeDateModule
+    {provide: MAT_DATE_LOCALE, useValue: 'ru-RU'},
+    {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
+    {provide: MAT_DATE_FORMATS, useValue: DATE_FORMATS},
   ],
   entryComponents: [CriteriaComponent, PrintModalComponent],
   bootstrap: [AppComponent]
