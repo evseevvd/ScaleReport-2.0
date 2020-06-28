@@ -46,7 +46,7 @@ export class AppComponent implements OnInit {
   }
 
   public openPrintDlg() {
-    this.dlg.open(PrintModalComponent, {width: '95%', data: this.weights}).afterClosed().subscribe(() => {
+    this.dlg.open(PrintModalComponent, {width: '95%', data: this.total}).afterClosed().subscribe(() => {
     });
   }
 

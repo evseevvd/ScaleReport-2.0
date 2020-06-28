@@ -29,6 +29,7 @@ import {FormsModule} from '@angular/forms';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import { PrintModalComponent } from './component/modal/print-modal/print-modal.component';
 import {MomentDateAdapter} from '@angular/material-moment-adapter';
+import { CarViewComponent } from './component/modal/car-view/car-view.component';
 
 export const DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -48,7 +49,8 @@ export const DATE_FORMATS: MatDateFormats = {
     ScaleTableComponent,
     PrintFormComponent,
     CriteriaComponent,
-    PrintModalComponent
+    PrintModalComponent,
+    CarViewComponent
   ],
   imports: [
     BrowserModule,
@@ -74,7 +76,7 @@ export const DATE_FORMATS: MatDateFormats = {
     {provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE]},
     {provide: MAT_DATE_FORMATS, useValue: DATE_FORMATS},
   ],
-  entryComponents: [CriteriaComponent, PrintModalComponent],
+  entryComponents: [CriteriaComponent, PrintModalComponent, CarViewComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
