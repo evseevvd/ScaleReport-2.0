@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {Criteria} from '../../../service/model/criteria.model';
+import {Criteria, setFirstTimeFrame, setSecondTimeFrame, setZeroTime} from '../../../service/model/criteria.model';
 import {DirectoryService} from '../../../service/directory.service';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
@@ -51,6 +51,13 @@ export class CriteriaComponent implements OnInit {
   apply() {
     this.data.position = 0;
     this.data.itemPerPage = 100;
+    switch (this.data.smena) {
+      case 'Смена 1': setFirstTimeFrame(this.data); break;
+      case 'Смена 2': setSecondTimeFrame(this.data); break;
+    }
+    if (this.data.startDate.isSame(this.data.endDate) && !this.data.smena) {
+      setZeroTime(this.data);
+    }
     this.dialogRef.close(this.data);
   }
 

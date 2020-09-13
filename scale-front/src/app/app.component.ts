@@ -6,7 +6,6 @@ import {CriteriaComponent} from './component/modal/criteria/criteria.component';
 import {SearchResult} from './service/model/search.result.model';
 import {PrintModalComponent} from './component/modal/print-modal/print-modal.component';
 import {filter, switchMap, tap} from 'rxjs/operators';
-import {Observable} from 'rxjs';
 import {Weight} from './service/model/weight.model';
 import {Moment} from 'moment';
 

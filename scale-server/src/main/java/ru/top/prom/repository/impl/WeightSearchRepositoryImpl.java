@@ -1,6 +1,5 @@
 package ru.top.prom.repository.impl;
 
-import org.springframework.data.jpa.repository.query.Jpa21Utils;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 import ru.top.prom.model.WeightAuto;
@@ -23,12 +22,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.math.BigDecimal.ZERO;
-import static java.math.BigDecimal.valueOf;
-import static java.util.stream.Stream.of;
 
 @Repository
 public class WeightSearchRepositoryImpl implements WeightSearchRepository {
