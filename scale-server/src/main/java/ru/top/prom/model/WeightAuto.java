@@ -173,6 +173,9 @@ public class WeightAuto extends BaseEntity {
     @Basic(fetch = FetchType.LAZY)
     private Integer idID;
 
+    @Column(name = "isremoved")
+    private Boolean removed;
+
     public Integer getId() {
         return id;
     }
@@ -491,6 +494,14 @@ public class WeightAuto extends BaseEntity {
 
     public void setIdID(Integer idID) {
         this.idID = idID;
+    }
+
+    public Boolean isRemoved() {
+        return removed;
+    }
+
+    public void setRemoved(Boolean removed) {
+        this.removed = removed;
     }
 }
 

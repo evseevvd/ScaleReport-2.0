@@ -32,10 +32,11 @@ export class SearchService {
   }
 
   private insert2map(map: Map<Moment, Array<Weight>>, val: any) {
-    if (map.get(val.date)) {
-      map.set(val.date, map.get(val.date).concat(val));
+    const k = val.date.split('T')[0]
+    if (map.get(k)) {
+      map.set(k, map.get(k).concat(val));
     } else {
-      map.set(val.date, [val]);
+      map.set(k, [val]);
     }
   }
 }

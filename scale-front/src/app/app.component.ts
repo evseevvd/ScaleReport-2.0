@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Criteria} from './service/model/criteria.model';
+import {Criteria, setFirstTimeFrame, setSecondTimeFrame, setZeroTime} from './service/model/criteria.model';
 import {SearchService} from './service/search.service';
 import {MatDialog} from '@angular/material/dialog';
 import {CriteriaComponent} from './component/modal/criteria/criteria.component';
@@ -8,6 +8,7 @@ import {PrintModalComponent} from './component/modal/print-modal/print-modal.com
 import {filter, switchMap, tap} from 'rxjs/operators';
 import {Weight} from './service/model/weight.model';
 import {Moment} from 'moment';
+import * as moment from 'moment'
 
 @Component({
   selector: 'app-root',
@@ -27,6 +28,28 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.criteria = {
+      endDate: moment(),
+      startDate: moment(),
+      smena: null,
+      loading: null,
+      unloading: null,
+      carNom: [],
+      cargo: [],
+      cargoCarrier: null,
+      addressee: null,
+      sender: null,
+      route: null,
+      itemPerPage: 100,
+      position: 0,
+    }
+    setZeroTime(this.criteria);
+    this.service
+      .search(this.criteria)
+      .subscribe(result => {
+        this.total = result;
+        this.weights = result.weightAutos;
+      })
   }
 
   public openSearchDlg() {

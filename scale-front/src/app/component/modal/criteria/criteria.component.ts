@@ -2,8 +2,8 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
 import {Criteria, setFirstTimeFrame, setSecondTimeFrame, setZeroTime} from '../../../service/model/criteria.model';
 import {DirectoryService} from '../../../service/directory.service';
-import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
+import {CriteriaHolderService} from '../../../service/criteria.holder.service';
 
 @Component({
   selector: 'app-criteria',
@@ -28,10 +28,15 @@ export class CriteriaComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<CriteriaComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Criteria,
-    private service: DirectoryService
+    private service: DirectoryService,
+    private criteriaHolder: CriteriaHolderService
   ) { }
 
   ngOnInit() {
+    if (this.criteriaHolder.get()) {
+      this.data = this.criteriaHolder.get();
+      // this.ctxSerach(this.data.carNom[0]);
+    }
     this.smenaDS = this.service.getAllTimeFrames();
     //this.carsDS = this.service.getAllCarNom();
     this.loadingDS = this.service.getAllLoading();
@@ -58,10 +63,30 @@ export class CriteriaComponent implements OnInit {
     if (this.data.startDate.isSame(this.data.endDate) && !this.data.smena) {
       setZeroTime(this.data);
     }
+    this.criteriaHolder.set(this.data);
     this.dialogRef.close(this.data);
   }
 
   cancel() {
     this.dialogRef.close('reject');
+  }
+
+  clear() {
+    this.data = {
+      endDate: null,
+      startDate: null,
+      smena: null,
+      loading: null,
+      unloading: null,
+      carNom: [],
+      cargo: [],
+      cargoCarrier: null,
+      addressee: null,
+      sender: null,
+      route: null,
+      itemPerPage: null,
+      position: null,
+    };
+    this.criteriaHolder.set(this.data);
   }
 }
