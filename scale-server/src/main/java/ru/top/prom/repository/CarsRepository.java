@@ -21,7 +21,7 @@ public interface CarsRepository extends JpaRepository<Cars, Integer> {
      * @param name - гос номер
      * @return Вернет грузовики {@link Cars}, соответствующие гос номеру
      */
-    @Query("select distinct c from Cars c where c.name like LOWER(concat('%', ?1, '%'))")
+    @Query("select c from Cars c where LOWER(c.name) like LOWER(concat('%', ?1, '%'))")
     List<Cars> findByNumber(String name);
 
     @Query("select distinct c from Cars c")
