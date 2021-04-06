@@ -81,8 +81,8 @@ public class WeightSearchRepositoryImpl implements WeightSearchRepository {
         List<Predicate> predicates = new ArrayList<>();
         predicates.add(
                 criteriaBuilder.or(
-                        criteriaBuilder.equal(root.get("isremoved"), Boolean.FALSE),
-                        criteriaBuilder.isNull(root.get("isremoved"))
+                        criteriaBuilder.equal(root.get("removed"), Boolean.FALSE),
+                        criteriaBuilder.isNull(root.get("removed"))
                 ));
         if (!StringUtils.isEmpty(criteria.getSmena())) {
             predicates.add(criteriaBuilder.equal(root.get("timeFrame"), criteria.getSmena()));
