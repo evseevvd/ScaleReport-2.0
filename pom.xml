@@ -13,7 +13,7 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring.web>2.3.1.RELEASE</spring.web>
+        <spring.web>2.5.12</spring.web>
         <zip.path>src/assembly/bin.xml</zip.path>
     </properties>
 
